@@ -14,6 +14,7 @@ info chat gpt#2
 
 
 autoindustry.py
+industries.py
 info
-this is a cool graph for this info but would like to see if it would be better for a different dataset 
+this is a cool graph for the data in industries.py but would like to see if it would be better for a different dataset 
 #gpt3
