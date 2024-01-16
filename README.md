@@ -5,3 +5,8 @@ dots change colors once the data has changed 1 example employee at a job and one
 the job it turns red 
 
 will edit in the morning read the chat gpt for more details
+
+
+building.py
+industries.py
+info chat gpt#2
