@@ -10,3 +10,10 @@ will edit in the morning read the chat gpt for more details
 building.py
 industries.py
 info chat gpt#2
+
+
+
+autoindustry.py
+info
+this is a cool graph for this info but would like to see if it would be better for a different dataset 
+#gpt3
