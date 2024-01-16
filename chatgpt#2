@@ -1,0 +1,113 @@
+ok i have this in a py file called industries.py now i want to use this from another file auto_industry = ["ejection molding", "wire assembly", "drivers", "sales", "consumer",]
+auto_indautomate = ["80%", "50%", "%5", "25%", "1%",]
+auto_indhuman = ["20%", "50%", "95%", "75%", "99%",] for something like a graph the graph used the header the auto_industry then use the rest of the things for calculations i think i will have to take the % out and do the calculations on the other script 
+ChatGPT
+It sounds like you want to use data from the industries.py file in another script to create a graph. To achieve this, you can follow these steps:
+
+Import the data from industries.py: In your new script, you need to import the lists (auto_industry, auto_indautomate, auto_indhuman) from the industries.py file. Make sure both files are in the same directory or provide the correct path.
+
+python
+Copy code
+from industries import auto_industry, auto_indautomate, auto_indhuman
+Remove '%' from the percentage values: As you mentioned, you may need to remove the '%' symbols from the percentage values and convert them to numerical values for calculations. You can use a simple loop for this:
+
+python
+Copy code
+auto_indautomate_values = [float(value.strip('%')) / 100 for value in auto_indautomate]
+auto_indhuman_values = [float(value.strip('%')) / 100 for value in auto_indhuman]
+Perform calculations: Now, you can use the data in your calculations, whether it's for a graph or any other purpose.
+
+python
+Copy code
+# Example: Calculate the average automation and human involvement
+avg_automation = sum(auto_indautomate_values) / len(auto_indautomate_values)
+avg_human_involvement = sum(auto_indhuman_values) / len(auto_indhuman_values)
+Use the data in your graph: Depending on the library you're using for graphing (e.g., Matplotlib, Plotly), you can use the calculated values to create your graph.
+
+python
+Copy code
+import matplotlib.pyplot as plt
+
+# Example: Bar chart for automation and human involvement
+categories = auto_industry
+plt.bar(categories, auto_indautomate_values, label='Automation')
+plt.bar(categories, auto_indhuman_values, label='Human', bottom=auto_indautomate_values)
+
+plt.xlabel('Industry')
+plt.ylabel('Percentage')
+plt.legend()
+plt.show()
+Remember to adjust the code according to your specific requirements and the graphing library you are using.
+
+User
+give me the full script that does this
+ChatGPT
+Certainly! Here's a simple example script that incorporates the steps mentioned earlier. This script assumes the use of Matplotlib for plotting the graph:
+
+python
+Copy code
+# industries.py
+auto_industry = ["ejection molding", "wire assembly", "drivers", "sales", "consumer"]
+auto_indautomate = ["80%", "50%", "5%", "25%", "1%"]
+auto_indhuman = ["20%", "50%", "95%", "75%", "99%"]
+
+# main_script.py
+import matplotlib.pyplot as plt
+
+# Step 1: Import data from industries.py
+from industries import auto_industry, auto_indautomate, auto_indhuman
+
+# Step 2: Remove '%' and convert to numerical values
+auto_indautomate_values = [float(value.strip('%')) / 100 for value in auto_indautomate]
+auto_indhuman_values = [float(value.strip('%')) / 100 for value in auto_indhuman]
+
+# Step 3: Perform calculations (e.g., average automation and human involvement)
+avg_automation = sum(auto_indautomate_values) / len(auto_indautomate_values)
+avg_human_involvement = sum(auto_indhuman_values) / len(auto_indhuman_values)
+
+# Step 4: Use the data in a bar chart
+categories = auto_industry
+plt.bar(categories, auto_indautomate_values, label='Automation')
+plt.bar(categories, auto_indhuman_values, label='Human', bottom=auto_indautomate_values)
+
+plt.xlabel('Industry')
+plt.ylabel('Percentage')
+plt.title('Automation vs Human Involvement')
+plt.legend()
+plt.show()
+Make sure both files (industries.py and main_script.py) are in the same directory. You can run main_script.py, and it will import the data from industries.py, perform the necessary calculations, and create a bar chart using Matplotlib. Adjust the code as needed for your specific use case and preferences.
+
+User
+import industries.py 
+ChatGPT
+It seems like you want to execute the content of industries.py directly within another script. However, Python doesn't use the import statement in the same way for scripts as it does for modules.
+
+If you want to reuse the variables from industries.py in another script, you should follow the steps mentioned earlier:
+
+python
+Copy code
+# main_script.py
+import matplotlib.pyplot as plt
+
+# Import data from industries.py
+from industries import auto_industry, auto_indautomate, auto_indhuman
+
+# Remove '%' and convert to numerical values
+auto_indautomate_values = [float(value.strip('%')) / 100 for value in auto_indautomate]
+auto_indhuman_values = [float(value.strip('%')) / 100 for value in auto_indhuman]
+
+# Perform calculations (e.g., average automation and human involvement)
+avg_automation = sum(auto_indautomate_values) / len(auto_indautomate_values)
+avg_human_involvement = sum(auto_indhuman_values) / len(auto_indhuman_values)
+
+# Use the data in a bar chart
+categories = auto_industry
+plt.bar(categories, auto_indautomate_values, label='Automation')
+plt.bar(categories, auto_indhuman_values, label='Human', bottom=auto_indautomate_values)
+
+plt.xlabel('Industry')
+plt.ylabel('Percentage')
+plt.title('Automation vs Human Involvement')
+plt.legend()
+plt.show()
+Run main_script.py, and it will use the data from industries.py to create a bar chart. The import industries statement is used to include the variables from industries.py in your main_script.py.
